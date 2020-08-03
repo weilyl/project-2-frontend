@@ -1,0 +1,7 @@
+COLORS
+
+Wiki Important: #10997f
+Link: #09b409
+Wiki: Important yellow #ffca45
+
+mauve-y rose CCA2A2
