@@ -5,3 +5,7 @@ Link: #09b409
 Wiki: Important yellow #ffca45
 
 mauve-y rose CCA2A2
+ACPC pleasant green main: 58bca9 RGB(88,188,169)
+ACPC modal bg beige: f9f6e5 RGB(249, 246, 229)
+ACPC button dark green: 075663 RGB(7, 86, 99)
+* change nav links to look like buttons w this bg color

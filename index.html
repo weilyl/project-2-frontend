@@ -4,17 +4,67 @@
     <title>ACPC Wardrobe</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="./style.css">
-    <script language="JavaScript" src="./script.js" type="text/javascript" defer></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous" defer></script>
-    <script language="JavaScript" src="./script.js" type="text/javascript" defer></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!-- https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js-->
-
+    <!--Font Awesome-->
+    <script src="https://use.fontawesome.com/e85072e2ac.js"></script>
+    <!--CSS & jQuery files-->
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <script language="JavaScript" src="./script.js" type="text/javascript"></script>
+    <!--jQuery user script-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    
 </head>
+
 <body>
+<header style="background-color: #f9f6e5;">
+    <!-------LOGO------>
+    <img src="http://assets.stickpng.com/images/5b4a216ec051e602a568cd7e.png" alt="logo for Nintendo's Animal Crossing Pocket" height="300">
+</header>
+
+<div class="pos-f-t" style="background-color: #58bca9;">
+    <nav class="navbar navbar-dark" style="background-color: #58bca9;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+    <div class="collapse" id="navbarToggleExternalContent" style="background-color: #58bca9;">
+        <div style="background-color: #58bca9;"> 
+          <h4 class="text-muted">View all:</h4>
+          <a href="./animals" class="nav-link"><span class="text-white">Animals</span></a>
+          <br/>
+          <a href="./outfits" class="nav-link"><span class="text-white">Outfits</span></a>
+        </div>
+    </div>
+</div>
+
+<div id="show-all">
+
+    <select name="animals" id="select-animal">
+        <option value="">--Please choose an animal--</option>
+        <!-- <option value="object-id">Animal Name</option> -->
+        <option value="">Don't see your favorite animal? Add them in the menu above!</option>
+        <optgroup label="Don't see your favorite animal? Add them in the menu above!"></optgroup>
+    </select>
+
+    <select name="outfits" id="select-outfit">
+        <option value="">--Please choose a clothing item--</option>
+        <!-- <option value="object-id">Animal Name</option> -->
+        <!-- post-MVP: add multiple attribute & optgroup tag for different categories of clothing & multiple clothing items per outfit -->
+        <option value="">Don't see your favorite items? Add them in the menu above!</option>
+        <optgroup label="Don't see your favorite items? Add them in the menu above!"></optgroup>
+    </select>
+
+    <button id="set-fave">Make a new card!</button>
+</div>
+
+
+<footer style="background-color: #58bca9;">
+    <p>Weily Lang 2020</p>
+</footer>  
+ <!--Bootstrap-->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 </html>
