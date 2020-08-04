@@ -5,9 +5,9 @@ const URL = deployedFrontEnd ? deployedFrontEnd : 'https://localhost:3000';
 //////////////////////
 // GLOBAL VARIABLES
 //////////////////////
-//const $selectAnimal = $('#selectanimal');
-//const $selectOutfit = $('#selectoutfit');
-//const $setFaveButton = $('#setfave');
+let selectAnimal = $('#selectanimal');
+let selectOutfit = $('#selectoutfit');
+const $setFaveButton = $('#setfave');
 // to add: Delete, Edit
 
 //////////////////////
@@ -40,14 +40,22 @@ const populateOutfitMenu = async () => {
 }
 
 // Make a card from the selected animal and outfit
+// but first, make sure the selectors are working
 const makeCardFromMenus = async () => {
-    //const $selectedAnimal = $("#selectanimal").val();
-    //const $selectedOutfit = $("#selectoutfit").val();
-    `${$('#selectanimal').val() }+${$("#selectoutfit").val()}`
+
+    //const selectedAnimal = $("#selectanimal").val();
+    //const selectedOutfit = $("#selectoutfit").val();
+    //`${$('#selectanimal').val() }+${$("#selectoutfit").val()}`
     //console.log(`${$('#selectanimal').val() }+${$("#selectoutfit").val()}`);
-    console.log($("#selectanimal").val())
+
+    console.log($('select#selectanimal').val())
 }
-$("#setfave").on('click', makeCardFromMenus);
+$("button#setfave").on('click', makeCardFromMenus);
+$setFaveButton.on('click', () => {console.log("BUT WHY")});
+selectAnimal.on('change', () => {console.log('so this???')}) 
+
+
+selectAnimal.on('change', console.log("so this??"));
 
 const showAnimals = async (animals) => {
     animals.forEach(animal => {
