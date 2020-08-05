@@ -40,7 +40,6 @@ const populateOutfitMenu = async () => {
     // create option tags for each JSON object retrieved from GET request
     data.forEach((outfit) => {
         const $option = $('<option>').attr('value', outfit._id).text(outfit.name);
-        $selectOutfit.append($('<option>').text("hello"));
         $selectOutfit.append($option);
     })
 }
