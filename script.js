@@ -54,30 +54,30 @@ $("button#setfave").on('click', updateAnimalWithOutfit);
 
 // EMPTY THE MENUS
 // to be used when deleting or updating animals and/or outfits so that the options stay current 
-const emptyMenus = async () => {
-    //$selectedAnimal = $('#selectoutfit option:selected');
-        // exit function if selection is a prompt rather than an animal
-        if ($selectAnimal.val() == 0){
-            return false
-        } else {
-            $selectAnimal.empty()
-        }
+// const emptyMenus = async () => {
+//     //$selectedAnimal = $('#selectoutfit option:selected');
+//         // exit function if selection is a prompt rather than an animal
+//         if ($selectAnimal.val() == 0){
+//             return false
+//         } else {
+//             $selectAnimal.empty()
+//         }
 
-    //$selectedOutfit = $('#selectoutfit option:selected');
-        // exit function if selection is a prompt rather than an animal
-        if ($selectOutfit.val() == 0){
-            return false
-        } else {
-            $selectOutfit.empty()
-        }
-}
+//     //$selectedOutfit = $('#selectoutfit option:selected');
+//         // exit function if selection is a prompt rather than an animal
+//         if ($selectOutfit.val() == 0){
+//             return false
+//         } else {
+//             $selectOutfit.empty()
+//         }
+// }
 
 // Defining DELETE BUTTON function (capable of deleting both)
 const deleteFromMenuAndAPI = async () => {
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
     // exit function if selection is a prompt rather than an animal
-    if ($selectAnimal.val() === 0) {
+    if ($selectAnimal.val() === 0 || null || undefined) {
         // return false
         console.log($selectAnimal.val());
     } else {
@@ -90,7 +90,7 @@ const deleteFromMenuAndAPI = async () => {
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
     // exit function if selection is a prompt rather than an animal
-    if ($selectOutfit.val() === 0) {
+    if ($selectOutfit.val() === 0 || null || undefined) {
         return false} 
     else {
         await fetch(`${URL}/outfits/${$selectOutfit.val()}`, {
@@ -98,10 +98,12 @@ const deleteFromMenuAndAPI = async () => {
         })
     }
     $animalsContainer.empty();
-    emptyMenus();
+    //emptyMenus();
+    $selectAnimal.empty();
+    $selectOutfit.empty();
     populateAnimalMenu();
     populateOutfitMenu();
-    // TO DO: repopulate animalsContainer
+    // TO DO: repopulate animalsContainer (first, make animal cards...)
 }
 
 // OLD - TO BE REUSED
