@@ -5,8 +5,8 @@ const URL = deployedFrontEnd ? deployedFrontEnd : 'https://localhost:3000';
 //////////////////////
 // GLOBAL VARIABLES
 //////////////////////
-let selectAnimal = $('#selectanimal');
-let selectOutfit = $('#selectoutfit');
+const $selectAnimal = $('#selectanimal');
+const $selectOutfit = $('#selectoutfit');
 const $setFaveButton = $('#setfave');
 // to add: Delete, Edit
 
@@ -22,7 +22,7 @@ const populateAnimalMenu = async () => {
 
     data.forEach((animal) => {
         const $option = $('<option>').attr('value', animal._id).text(animal.name);
-        $('#selectanimal').append($option);
+        $selectAnimal.append($option);
         // console.log(animal._id);
     })
 }
@@ -31,11 +31,11 @@ const populateAnimalMenu = async () => {
 const populateOutfitMenu = async () => {
     const response = await fetch(`${URL}/outfits`);
     const data = await response.json();
-
+    // create option tags for each JSON object retrieved from GET request
     data.forEach((outfit) => {
         const $option = $('<option>').attr('value', outfit._id).text(outfit.name);
-        $('#selectoutfit').append($('<option>').text("hello"));
-        $('#selectoutfit').append($option);
+        $selectOutfit.append($('<option>').text("hello"));
+        $selectOutfit.append($option);
     })
 }
 
@@ -43,20 +43,24 @@ const populateOutfitMenu = async () => {
 // but first, make sure the selectors are working
 const makeCardFromMenus = async () => {
 
-    //const selectedAnimal = $("#selectanimal").val();
-    //const selectedOutfit = $("#selectoutfit").val();
+    $selectAnimal.val();
+    $selectOutfit.val();
     //`${$('#selectanimal').val() }+${$("#selectoutfit").val()}`
-    //console.log(`${$('#selectanimal').val() }+${$("#selectoutfit").val()}`);
-
-    console.log($('select#selectanimal').val())
+    console.log(`${$('#selectanimal').val() }+${$("#selectoutfit").val()}`);
+    
 }
 $("button#setfave").on('click', makeCardFromMenus);
-$setFaveButton.on('click', () => {console.log("BUT WHY")});
-selectAnimal.on('change', () => {console.log('so this???')}) 
+//$setFaveButton.on('click', () => {console.log("BUT WHY")});
+//$selectAnimal.on('change', () => {console.log('so this???')}) 
+
+// DELETE animal from collection
+// post-MVP add a warning modal or alert when clicked
+const deleteAnimalFromAPI = async () => {
+
+}
 
 
-selectAnimal.on('change', console.log("so this??"));
-
+// OLD
 const showAnimals = async (animals) => {
     animals.forEach(animal => {
         $li = $('<li>').html(`
@@ -70,11 +74,16 @@ const showAnimals = async (animals) => {
 // MAIN APPLICATION LOGIC
 //////////////////////
 
-// Get all animals
+// Get all animals & populate select menu on load
 populateAnimalMenu();
-// Get all outfits
+// Get all outfits & populate select menu on load
 populateOutfitMenu();
 
+
+
+//////////////
+// OLD TESTS
+//////////////
 // fetch(URL)
 // .then(data => {
 //     getAnimals()
