@@ -86,9 +86,9 @@ const deleteFromMenuAndAPI = async () => {
 }
 
 // EMPTY THE MENUS
-$selectedOutfit = $('#selectoutfit option:selected');
-        // exit function if selection is a prompt rather than an animal
-        if ($selectedOutfit.val() == null || undefined)
+// $selectedOutfit = $('#selectoutfit option:selected');
+//         // exit function if selection is a prompt rather than an animal
+//         if ($selectedOutfit.val() == null || undefined)
 
 // OLD
 const showAnimals = async (animals) => {
