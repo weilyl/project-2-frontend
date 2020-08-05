@@ -58,7 +58,7 @@ $("button#setfave").on('click', updateAnimalWithOutfit);
 const emptyMenus = async () => {
     //$selectedAnimal = $('#selectoutfit option:selected');
         // exit function if selection is a prompt rather than an animal
-        if ($selectedAnimal.val() == 0){
+        if ($selectAnimal.val() == 0){
             return false
         } else {
             $selectAnimal.empty()
@@ -66,7 +66,7 @@ const emptyMenus = async () => {
 
     //$selectedOutfit = $('#selectoutfit option:selected');
         // exit function if selection is a prompt rather than an animal
-        if ($selectedOutfit.val() == 0){
+        if ($selectOutfit.val() == 0){
             return false
         } else {
             $selectOutfit.empty()
