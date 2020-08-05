@@ -8,6 +8,12 @@ const URL = deployedFrontEnd ? deployedFrontEnd : 'https://localhost:3000';
 const $selectAnimal = $('#selectanimal');
 const $selectOutfit = $('#selectoutfit');
 const $setFaveButton = $('#setfave');
+const $deleteButton = $('#deleteSelected');
+const $updateAnimalButton = $('#updateAnimal');
+const $updateOutfitButton = $('#updateOutfit');
+const $animalsContainer = $("#display-animals-here");
+let $selectedAnimal = $('#selectanimal option:selected'); // Animal selected from menu for pairing up/updating/deleting
+let $selectedOutfit = $('#selectoutfit option:selected'); // Outfit selected from menu for pairing up/updating/deleting
 // to add: Delete, Edit
 
 //////////////////////
@@ -39,26 +45,50 @@ const populateOutfitMenu = async () => {
     })
 }
 
-// Make a card from the selected animal and outfit
+// Make a card from the selected animal and outfit (update animal to include outfit)
 // but first, make sure the selectors are working
-const makeCardFromMenus = async () => {
-
-    $selectAnimal.val();
-    $selectOutfit.val();
-    //`${$('#selectanimal').val() }+${$("#selectoutfit").val()}`
-    console.log(`${$('#selectanimal').val() }+${$("#selectoutfit").val()}`);
-    
+const updateAnimalWithOutfit = async () => {
+    $selectedAnimal = $selectAnimal.val();
+    $selectedOutfit = $selectOutfit.val();
 }
-$("button#setfave").on('click', makeCardFromMenus);
+$("button#setfave").on('click', updateAnimalWithOutfit);
 //$setFaveButton.on('click', () => {console.log("BUT WHY")});
 //$selectAnimal.on('change', () => {console.log('so this???')}) 
 
-// DELETE animal from collection
-// post-MVP add a warning modal or alert when clicked
-const deleteAnimalFromAPI = async () => {
+// Defining DELETE BUTTON function (capable of deleting both)
+const deleteFromMenuAndAPI = async () => {
+    // DELETE animal from collection
+    // post-MVP add a warning modal or alert when clicked
+    $selectedAnimal = $('#selectanimal option:selected');
+    // exit function if selection is a prompt rather than an animal
+    if ($selectedAnimal.val() === null || undefined) {
+        return false} 
+    else {
+        await fetch(`${URL}/animals/${$selectedAnimal.val()}`, {
+            method: "delete"
+        })
+    };
 
+    // DELETE animal from collection
+    // post-MVP add a warning modal or alert when clicked
+    $selectedOutfit = $('#selectoutfit option:selected');
+    // exit function if selection is a prompt rather than an animal
+    if ($selectedOutfit.val() === null || undefined) {
+        return false} 
+    else {
+        await fetch(`${URL}/animals/${$selectedOutfit.val()}`, {
+        method: "delete"
+        })
+    }
+    $animalsContainer.empty();
+    populateAnimalMenu();
+    populateOutfitMenu();
 }
 
+// EMPTY THE MENUS
+$selectedOutfit = $('#selectoutfit option:selected');
+        // exit function if selection is a prompt rather than an animal
+        if ($selectedOutfit.val() == null || undefined)
 
 // OLD
 const showAnimals = async (animals) => {
@@ -78,7 +108,8 @@ const showAnimals = async (animals) => {
 populateAnimalMenu();
 // Get all outfits & populate select menu on load
 populateOutfitMenu();
-
+// Delete Button Listener
+$deleteButton.on('click', deleteFromMenuAndAPI);
 
 
 //////////////
