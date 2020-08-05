@@ -48,8 +48,8 @@ const populateOutfitMenu = async () => {
 // Make a card from the selected animal and outfit (update animal to include outfit)
 // but first, make sure the selectors are working
 const updateAnimalWithOutfit = async () => {
-    $selectedAnimal = $selectAnimal.val();
-    $selectedOutfit = $selectOutfit.val();
+    //$selectedAnimal = $selectAnimal.val();
+    //$selectedOutfit = $selectOutfit.val();
 }
 $("button#setfave").on('click', updateAnimalWithOutfit);
 //$setFaveButton.on('click', () => {console.log("BUT WHY")});
@@ -59,7 +59,7 @@ $("button#setfave").on('click', updateAnimalWithOutfit);
 const deleteFromMenuAndAPI = async () => {
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
-    $selectedAnimal = $('#selectanimal option:selected');
+    //$selectedAnimal = $('#selectanimal option:selected');
     // exit function if selection is a prompt rather than an animal
     if ($selectedAnimal.val() === null || undefined) {
         return false} 
@@ -71,7 +71,7 @@ const deleteFromMenuAndAPI = async () => {
 
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
-    $selectedOutfit = $('#selectoutfit option:selected');
+    //$selectedOutfit = $('#selectoutfit option:selected');
     // exit function if selection is a prompt rather than an animal
     if ($selectedOutfit.val() === null || undefined) {
         return false} 
@@ -81,16 +81,33 @@ const deleteFromMenuAndAPI = async () => {
         })
     }
     $animalsContainer.empty();
+    emptyMenus();
     populateAnimalMenu();
     populateOutfitMenu();
+    // TO DO: repopulate animalsContainer
 }
 
 // EMPTY THE MENUS
-// $selectedOutfit = $('#selectoutfit option:selected');
-//         // exit function if selection is a prompt rather than an animal
-//         if ($selectedOutfit.val() == null || undefined)
+// to be used when deleting or updating animals and/or outfits so that the options stay current 
+const emptyMenus = async () => {
+    $selectedAnimal = $('#selectoutfit option:selected');
+        // exit function if selection is a prompt rather than an animal
+        if ($selectedAnimal.val() == null || undefined){
+            return false
+        } else {
+            $selectAnimal.empty()
+        }
 
-// OLD
+    $selectedOutfit = $('#selectoutfit option:selected');
+        // exit function if selection is a prompt rather than an animal
+        if ($selectedOutfit.val() == null || undefined){
+            return false
+        } else {
+            $selectOutfit.empty()
+        }
+}
+
+// OLD - TO BE REUSED
 const showAnimals = async (animals) => {
     animals.forEach(animal => {
         $li = $('<li>').html(`
