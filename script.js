@@ -14,7 +14,7 @@ const $updateOutfitButton = $('#updateOutfit');
 const $animalsContainer = $("#display-animals-here");
 let $selectedAnimal = $('#selectanimal option:selected'); // Animal selected from menu for pairing up/updating/deleting
 let $selectedOutfit = $('#selectoutfit option:selected'); // Outfit selected from menu for pairing up/updating/deleting
-// to add: Delete, Edit
+
 
 //////////////////////
 // FUNCTION DEFINITIONS
@@ -52,19 +52,37 @@ const updateAnimalWithOutfit = async () => {
     //$selectedOutfit = $selectOutfit.val();
 }
 $("button#setfave").on('click', updateAnimalWithOutfit);
-//$setFaveButton.on('click', () => {console.log("BUT WHY")});
-//$selectAnimal.on('change', () => {console.log('so this???')}) 
+
+// EMPTY THE MENUS
+// to be used when deleting or updating animals and/or outfits so that the options stay current 
+const emptyMenus = async () => {
+    $selectedAnimal = $('#selectoutfit option:selected');
+        // exit function if selection is a prompt rather than an animal
+        if ($selectedAnimal.val() == 0){
+            return false
+        } else {
+            $selectAnimal.empty()
+        }
+
+    $selectedOutfit = $('#selectoutfit option:selected');
+        // exit function if selection is a prompt rather than an animal
+        if ($selectedOutfit.val() == 0){
+            return false
+        } else {
+            $selectOutfit.empty()
+        }
+}
 
 // Defining DELETE BUTTON function (capable of deleting both)
 const deleteFromMenuAndAPI = async () => {
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
-    //$selectedAnimal = $('#selectanimal option:selected');
     // exit function if selection is a prompt rather than an animal
     if ($selectedAnimal.val() === 0) {
         // return false
         console.log($selectedAnimal.val());
     } else {
+        // delete at /:id
         await fetch(`${URL}/animals/${$selectedAnimal.val()}`, {
             method: "delete"
         })
@@ -72,12 +90,11 @@ const deleteFromMenuAndAPI = async () => {
 
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
-    //$selectedOutfit = $('#selectoutfit option:selected');
     // exit function if selection is a prompt rather than an animal
     if ($selectedOutfit.val() === 0) {
         return false} 
     else {
-        await fetch(`${URL}/animals/${$selectedOutfit.val()}`, {
+        await fetch(`${URL}/outfits/${$selectedOutfit.val()}`, {
         method: "delete"
         })
     }
@@ -86,26 +103,6 @@ const deleteFromMenuAndAPI = async () => {
     populateAnimalMenu();
     populateOutfitMenu();
     // TO DO: repopulate animalsContainer
-}
-
-// EMPTY THE MENUS
-// to be used when deleting or updating animals and/or outfits so that the options stay current 
-const emptyMenus = async () => {
-    $selectedAnimal = $('#selectoutfit option:selected');
-        // exit function if selection is a prompt rather than an animal
-        if ($selectedAnimal.val() == null || undefined){
-            return false
-        } else {
-            $selectAnimal.empty()
-        }
-
-    $selectedOutfit = $('#selectoutfit option:selected');
-        // exit function if selection is a prompt rather than an animal
-        if ($selectedOutfit.val() == null || undefined){
-            return false
-        } else {
-            $selectOutfit.empty()
-        }
 }
 
 // OLD - TO BE REUSED
