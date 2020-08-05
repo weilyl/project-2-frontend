@@ -62,8 +62,9 @@ const deleteFromMenuAndAPI = async () => {
     //$selectedAnimal = $('#selectanimal option:selected');
     // exit function if selection is a prompt rather than an animal
     if ($selectedAnimal.val() === null || undefined) {
-        return false} 
-    else {
+        // return false
+        console.log($selectedAnimal.val());
+    } else {
         await fetch(`${URL}/animals/${$selectedAnimal.val()}`, {
             method: "delete"
         })

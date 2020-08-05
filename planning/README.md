@@ -84,6 +84,20 @@ Error info?
 
 **RESOLUTION**: 
 
+**ERROR**:
+When clicking delete button, following error occurs (and request to delete select-menu selections from menu is not completed):
+```
+400 Bad request
+deleteFromMenuAndAPI	@	script.js:79
+async function (async)		
+deleteFromMenuAndAPI	@	script.js:67
+dispatch	@	jquery-3.5.1.js:5429
+elemData.handle	@	jquery-3.5.1.js:5233
+```
+
+**RESOLUTION**:
+
+
 **ERROR**: 
 
 Unable to grab the `option` values or have the button event listener fire upon event rather than upon page load.
