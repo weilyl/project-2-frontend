@@ -95,11 +95,19 @@ dispatch	@	jquery-3.5.1.js:5429
 elemData.handle	@	jquery-3.5.1.js:5233
 ```
 
-In addition, Google Chrome console shows that the request is being made to `https://acpc-api.herokuapp.com/animals/--Please%20choose%20a%20clothing%20item--`, indicating that the base case if statement is not functioning as intended. Will attempt setting the `value` attribute of the `options` prompts to `0`.
-
-Realized `option:selected` was targeting the default options in both menus, so removed them from global variables and selectors. 
+In addition, Google Chrome console shows that the request is being made to `https://acpc-api.herokuapp.com/animals/--Please%20choose%20a%20clothing%20item--`, indicating that the base case if statement is not functioning as intended. 
 
 **RESOLUTION**:
+Multiple edits resolved the above error(s). 
+
+The `value` attribute of the `options` prompts were set to `0` so they would not be affected by the delete button.
+
+The jQuery selector `option:selected` was targeting the default options in both menus, so it was removed from global variables and selectors. 
+
+Use of global variables inside function definitions were edited according to the removal of `option:selected` globally. 
+
+The function to populate the outfits menu had originally included `option` tags without `value` attributes and that were not associated with JSON objects. These test options were removed to avoid going to an endpoint with no defined route in the backend server. 
+
 
 
 **ERROR**: 
