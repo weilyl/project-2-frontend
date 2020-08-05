@@ -61,7 +61,7 @@ const deleteFromMenuAndAPI = async () => {
     // post-MVP add a warning modal or alert when clicked
     //$selectedAnimal = $('#selectanimal option:selected');
     // exit function if selection is a prompt rather than an animal
-    if ($selectedAnimal.val() === null || undefined) {
+    if ($selectedAnimal.val() === 0) {
         // return false
         console.log($selectedAnimal.val());
     } else {
@@ -74,7 +74,7 @@ const deleteFromMenuAndAPI = async () => {
     // post-MVP add a warning modal or alert when clicked
     //$selectedOutfit = $('#selectoutfit option:selected');
     // exit function if selection is a prompt rather than an animal
-    if ($selectedOutfit.val() === null || undefined) {
+    if ($selectedOutfit.val() === 0) {
         return false} 
     else {
         await fetch(`${URL}/animals/${$selectedOutfit.val()}`, {

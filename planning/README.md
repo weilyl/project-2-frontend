@@ -95,6 +95,8 @@ dispatch	@	jquery-3.5.1.js:5429
 elemData.handle	@	jquery-3.5.1.js:5233
 ```
 
+In addition, Google Chrome console shows that the request is being made to `https://acpc-api.herokuapp.com/animals/--Please%20choose%20a%20clothing%20item--`, indicating that the base case if statement is not functioning as intended. Will attempt setting the `value` attribute of the `options` prompts to `0`.
+
 **RESOLUTION**:
 
 
