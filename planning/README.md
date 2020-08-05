@@ -84,3 +84,29 @@ Error info?
 
 **RESOLUTION**: 
 
+**ERROR**: 
+
+Unable to grab the `option` values or have the button event listener fire upon event rather than upon page load.
+
+**RESOLUTION**: 
+
+Lia figured out that since my jQuery & `script.js` script tags were higher on my HTML document than the `body` tag, both `script` tags needed the `defer` attribute so that they wouldn't run too early. The issue was fixed upon adding the `defer` attribute. 
+
+One of the `select` on.change() event listeners was still firing upon page load rather than upon the event, so I will be sticking with callback functions or arrow functions. When testing event listeners, I will be sure to stick with arrow functions to `console.log`, or to put `console.log()` in a callback function.
+
+**ERROR**: 
+
+Drop-down menu (`select`) was not populating with `options` from my API call.
+
+**RESOLUTION**: 
+
+On Jordan's advice, using id-selectors instead of jQuery global variables fixed the issue. In further bugs, it seems the lack of defer attribute in my jQuery & `script.js` script tags contributed to the issue. 
+
+
+**ERROR**: 
+
+Bootstrap navbar displaying as if Bootstrap was not installed (links were display block rather than inline, the color/stylings were not being applied, some links were not being shown at all, and the hamburger icon was not displaying or toggling/collapsing).
+
+**RESOLUTION**: 
+
+Deleted all code from `head` tag. Instead of using CDN code from w3schools, I used code from `getBootstrap.com`. On Kwok's advice, I inserted the script tags at the bottom of the `body` tag and made sure to leave the defer attribute out of those tags.
