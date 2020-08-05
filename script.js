@@ -106,6 +106,9 @@ const deleteFromMenuAndAPI = async () => {
     // TO DO: repopulate animalsContainer (first, make animal cards...)
 }
 
+// add new Animal (create)
+
+
 // OLD - TO BE REUSED
 const showAnimals = async (animals) => {
     animals.forEach(animal => {
