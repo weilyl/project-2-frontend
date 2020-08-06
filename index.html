@@ -21,6 +21,7 @@
     <img src="http://assets.stickpng.com/images/5b4a216ec051e602a568cd7e.png" alt="logo for Nintendo's Animal Crossing Pocket">
 </header>
 
+<!---- HAMBURGER MENU & NAVBAR ---->
 <div class="pos-f-t" style="background-color: #58bca9;">
     <nav class="navbar navbar-dark" style="background-color: #58bca9;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,8 +55,10 @@
     </div>
 </div>
 
+<!---- Drop-down menus ---->
 <div id="show-all">
 
+    <!---- Select an animal ---->
     <select name="animals" id="selectanimal">
         <option val="0">--Please choose an animal--</option>
         <!-- <option value="object-id">Animal Name</option> -->
@@ -63,6 +66,7 @@
         <!--optgroup label="Don't see your favorite animal? Add them in the menu above!"></optgroup-->
     </select>
 
+    <!---- Select an animal ---->
     <select name="outfits" id="selectoutfit">
         <option>--Please choose a clothing item--</option>
         <!-- <option value="object-id">Animal Name</option> -->
@@ -71,14 +75,18 @@
         <!--optgroup label="Don't see your favorite items? Add them in the menu above!"></optgroup-->
     </select>
 
+    <!---- Buttons for drop-down menu ---->
     <button id="setfave">Make a new card!</button>
     <button id="deleteSelected">Delete Selection(s)</button>
     <!--button id="updateAnimal">Update Animal</button-->
     <button id="updateOutfit">Update Outfit</button>
 
+    <!---- Div Container to display animal cards --->
     <div id="display-animals-here">
 
     </div>
+
+    <!--- Modal code courtesy of https://getbootstrap.com/docs/4.0/components/modal/ and Ebony ---->
 
     <!--------New Animal Modal------->
     <div class="modal fade" id="new-animal-modal" tabindex="-1" role="dialog" aria-labelledby="newAnimalModalCenterTitle" aria-hidden="true">
@@ -120,7 +128,7 @@
         </div>
       </div>
 
-      <!--------New Outfit Modal------>
+    <!--------New Outfit Modal------>
     <div class="modal fade" id="new-outfit-modal" tabindex="-1" role="dialog" aria-labelledby="newOutfitModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -165,10 +173,10 @@
 <footer style="background-color: #58bca9; margin-bottom: 0;" class="footer">
     Weily Lang 2020
 </footer>  
- <!--Bootstrap-->
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--Bootstrap-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
