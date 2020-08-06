@@ -44,10 +44,26 @@ const populateOutfitMenu = async () => {
     })
 }
 
-// Make a card from the selected animal and outfit (update animal to include outfit)
+// Reference animals and outfits
 
 const updateAnimalWithOutfit = async () => {
+    const animalId = $('#selectAnimal').val();
+    const outfitId = $('#selectOutfit').val();
+    const updatedAnimal = {
+        outfits: outfitId
+    };
+    const updatedOutfit = {
+        animals: animalId
+    };
+    const matching = await fetch(`${URL}/match/${animalId}/${outfitId}`,
+    {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        }, body: JSON.stringify(newObj)
+    })
 }
+
 $("button#setfave").on('click', updateAnimalWithOutfit);
 
 // EMPTY THE MENUS
