@@ -45,10 +45,8 @@ const populateOutfitMenu = async () => {
 }
 
 // Make a card from the selected animal and outfit (update animal to include outfit)
-// but first, make sure the selectors are working
+
 const updateAnimalWithOutfit = async () => {
-    //$selectedAnimal = $selectAnimal.val();
-    //$selectedOutfit = $selectOutfit.val();
 }
 $("button#setfave").on('click', updateAnimalWithOutfit);
 
@@ -108,7 +106,46 @@ const deleteFromMenuAndAPI = async () => {
 
 // add new Animal (create)
 const addNewAnimal = async () => {
-    
+    const $newAnimalName = $('#new-animal-name-input-field').val();
+    const $newAnimalPhoto = $('#new-animal-photo-url-input-field').val();
+    const $newAnimalPhotoDesc = $('#new-animal-photo-desc-input-field').val();
+    const newAnimal = {
+       "name": $newAnimalName,
+       "photo": $newAnimalPhoto,
+       "photo-alt-text": $newAnimalPhotoDesc
+    }
+    const response = await fetch(`${URL}/animals`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newAnimal)
+    })
+    console.log(newAnimal);
+    $selectAnimal.empty();
+    populateAnimalMenu();
+}
+
+// add new outfit to the database (create)
+const addNewOutfit = async () => {
+    const $newOutfitName = $('#new-outfit-name-input-field').val();
+    const $newOutfitPhoto = $('#new-outfit-photo-url-input-field').val();
+    const $newOutfitPhotoDesc = $('#new-outfit-photo-desc-input-field').val();
+    const newOutfit = {
+       "name": $newOutfitName,
+       "photo": $newOutfitPhoto,
+       "photo-alt-text": $newOutfitPhotoDesc
+    }
+    const response = await fetch(`${URL}/outfits`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newOutfit)
+    })
+    console.log(newOutfit);
+    $selectOutfit.empty();
+    populateOutfitMenu();
 }
 
 // add new Outfit (create)
@@ -134,6 +171,8 @@ populateOutfitMenu();
 // Delete Button Listener
 $deleteButton.on('click', deleteFromMenuAndAPI);
 
+$('#addAnimalButton').on('click', addNewAnimal);
+$('#addOutfitButton').on('click', addNewOutfit);
 
 //////////////
 // OLD TESTS

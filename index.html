@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-</head>
+</head> 
 
 <body>
 <header style="background-color: #f9f6e5;">
@@ -55,38 +55,7 @@
     </div>
 </div>
 
-<!---- Drop-down menus ---->
-<div id="show-all">
-
-    <!---- Select an animal ---->
-    <select name="animals" id="selectanimal">
-        <option val="0">--Please choose an animal--</option>
-        <!-- <option value="object-id">Animal Name</option> -->
-        <option val="0">Don't see your favorite animal? Add them in the menu above!</option>
-        <!--optgroup label="Don't see your favorite animal? Add them in the menu above!"></optgroup-->
-    </select>
-
-    <!---- Select an animal ---->
-    <select name="outfits" id="selectoutfit">
-        <option>--Please choose a clothing item--</option>
-        <!-- <option value="object-id">Animal Name</option> -->
-        <!-- post-MVP: add multiple attribute & optgroup tag for different categories of clothing & multiple clothing items per outfit -->
-        <option>Don't see your favorite items? Add them in the menu above!</option>
-        <!--optgroup label="Don't see your favorite items? Add them in the menu above!"></optgroup-->
-    </select>
-
-    <!---- Buttons for drop-down menu ---->
-    <button id="setfave">Make a new card!</button>
-    <button id="deleteSelected">Delete Selection(s)</button>
-    <!--button id="updateAnimal">Update Animal</button-->
-    <button id="updateOutfit">Update Outfit</button>
-
-    <!---- Div Container to display animal cards --->
-    <div id="display-animals-here">
-
-    </div>
-
-    <!--- Modal code courtesy of https://getbootstrap.com/docs/4.0/components/modal/ and Ebony ---->
+<!--- Modal code courtesy of https://getbootstrap.com/docs/4.0/components/modal/ and Ebony ---->
 
     <!--------New Animal Modal------->
     <div class="modal fade" id="new-animal-modal" tabindex="-1" role="dialog" aria-labelledby="newAnimalModalCenterTitle" aria-hidden="true">
@@ -121,7 +90,7 @@
                   </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #075663;">Add this animal!</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #075663;" id="addAnimalButton">Add this animal!</button>
               
             </div>
           </div>
@@ -162,11 +131,42 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #075663;">Add this outfit!</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #075663;" id="addOutfitButton">Add this outfit!</button>
             </div>
           </div>
         </div>
       </div>
+
+<!---- Drop-down menus ---->
+<div id="show-all">
+
+    <!---- Select an animal ---->
+    <select name="animals" id="selectanimal">
+        <option val="0">Please choose an animal</option>
+        <!-- <option value="object-id">Animal Name</option> -->
+        <option val="0">Don't see your favorite animal? Add them in the menu above!</option>
+        <!--optgroup label="Don't see your favorite animal? Add them in the menu above!"></optgroup-->
+    </select>
+
+    <!---- Select an animal ---->
+    <select name="outfits" id="selectoutfit">
+        <option val="0">Please choose a clothing item</option>
+        <!-- <option value="object-id">Animal Name</option> -->
+        <!-- post-MVP: add multiple attribute & optgroup tag for different categories of clothing & multiple clothing items per outfit -->
+        <option val="0">Don't see your favorite items? Add them in the menu above!</option>
+        <!--optgroup label="Don't see your favorite items? Add them in the menu above!"></optgroup-->
+    </select>
+
+    <!---- Buttons for drop-down menu ---->
+    <button id="setfave">Make a new card!</button>
+    <button id="deleteSelected">Delete Selection(s)</button>
+    <!--button id="updateAnimal">Update Animal</button-->
+    <button id="updateOutfit">Update Outfit</button>
+
+    <!---- Div Container to display animal cards --->
+    <div id="display-animals-here">
+        
+    </div>
 
 </div>
 
