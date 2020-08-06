@@ -1,4 +1,40 @@
+body {
+    margin: 0;
+    /* box-sizing: border-box; */
+}
+
+header {
+    width: 100vw;
+    background-color: #f9f6e5;
+    text-align: center;
+    margin: 0;
+}
+
+header > img {
+    height: 30vh;
+    margin: 20px;
+}
+
+nav {
+    width: 100vw;
+    margin: 0;
+}
+
+select {
+    /*https://github.com/select2/select2/issues/4585*/
+    max-width: 200px;
+    overflow: hidden;
+    /*Altered two below to make word wrap work */
+    word-wrap: normal !important;
+    white-space: normal;
+}
+
+
+#show-all > button {
+    display: block
+}
+
 footer {
     margin-top: 20px;
-    width: 100%;
+    width: 100vw;
 }

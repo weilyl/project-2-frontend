@@ -18,7 +18,7 @@
 <body>
 <header style="background-color: #f9f6e5;">
     <!-------LOGO------>
-    <img src="http://assets.stickpng.com/images/5b4a216ec051e602a568cd7e.png" alt="logo for Nintendo's Animal Crossing Pocket" height="300">
+    <img src="http://assets.stickpng.com/images/5b4a216ec051e602a568cd7e.png" alt="logo for Nintendo's Animal Crossing Pocket">
 </header>
 
 <div class="pos-f-t" style="background-color: #58bca9;">
@@ -42,12 +42,12 @@
             <!-------Add new: --- HEADING ------->
             <h4 style="color: #075663;">Add new:</h4>
             <!-------Click to display modal to add new animal------->
-            <a href="./animals" id="add-new-animal" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+            <a href="./animals" id="add-new-animal" class="nav-link" data-toggle="modal" data-target="#new-animal-modal">
                 <span class="text-white">Animals</span>
             </a>
             <br/>
             <!-------Click to display modal to add new outfit------->
-            <a href="./outfits" id="add-new-outfit" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+            <a href="./outfits" id="add-new-outfit" class="nav-link" data-toggle="modal" data-target="#new-outfit-modal">
                 <span class="text-white">Outfits</span>
             </a>
         </div>
@@ -80,17 +80,37 @@
 
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!--------New Animal Modal------->
+    <div class="modal fade" id="new-animal-modal" tabindex="-1" role="dialog" aria-labelledby="newAnimalModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Add a new animal to the database</h5>
+              <h5 class="modal-title" id="newAnimalModalLongTitle">Add a new animal to the database</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              ...
+                <div class="input-group mb-3" id="new-animal-name-input-div">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text">Name</span>
+                    </div>
+                    <input type="text" class="form-control" id="new-animal-name-input-field">
+                  </div>  
+                  <!-- Name -->
+                  <div class="input-group mb-3" id="new-animal-photo-url-input-div">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Photo (URL)</span>
+                    </div>
+                    <input type="text" class="form-control" id="new-animal-photo-url-input-field">
+                  </div>
+                  <!-- Medium -->
+                  <div class="input-group mb-3" id="new-animal-photo-desc-input-div">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Photo Description</span>
+                    </div>
+                    <textarea class="form-control" id="new-animal-photo-desc-input-field"></textarea>
+                  </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #075663;">Add this animal!</button>
@@ -99,6 +119,47 @@
           </div>
         </div>
       </div>
+
+      <!--------New Outfit Modal------>
+    <div class="modal fade" id="new-outfit-modal" tabindex="-1" role="dialog" aria-labelledby="newOutfitModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="newOutfitModalLongTitle">Add a new animal to the database</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <!-- Name Input -->
+                <div class="input-group mb-3" id="new-outfit-name-input-div">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Name</span>
+                    </div>
+                    <input type="text" class="form-control" id="new-outfit-name-input-field">
+                </div>  
+                <!-- Photo URL Input --> 
+                <div class="input-group mb-3" id="new-outfit-photo-url-input-div">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Photo (URL)</span>
+                    </div>
+                    <input type="text" class="form-control" id="new-outfit-photo-url-input-field">
+                </div>
+                <!-- Photo Description (alt text) Input --> 
+                <div class="input-group mb-3" id="new-outfit-photo-desc-input-div">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Photo Description</span>
+                    </div>
+                    <textarea class="form-control" id="new-outfit-photo-desc-input-field"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #075663;">Add this outfit!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 </div>
 
 <footer style="background-color: #58bca9; margin-bottom: 0;" class="footer">

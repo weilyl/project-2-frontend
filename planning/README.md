@@ -84,6 +84,15 @@ Error info?
 
 **RESOLUTION**: 
 
+
+**ERROR**:
+
+When using Bootstrap, the footer overlaps the hamburger/toggle navbar. When the user scrolls down to see the bottom of the navbar, the footer gets stuck in the navbar menu.  
+
+**RESOLUTION**:
+
+Replaced `div` tag with `footer` tag as before. Deleted all CSS stylings except the inline color stylings. Added `margin-top` to CSS for footer. 
+
 **ERROR**:
 When clicking delete button, following error occurs (and request to delete select-menu selections from menu is not completed):
 ```
@@ -107,7 +116,6 @@ The jQuery selector `option:selected` was targeting the default options in both 
 Use of global variables inside function definitions were edited according to the removal of `option:selected` globally. 
 
 The function to populate the outfits menu had originally included `option` tags without `value` attributes and that were not associated with JSON objects. These test options were removed to avoid going to an endpoint with no defined route in the backend server. 
-
 
 
 **ERROR**: 
