@@ -107,7 +107,11 @@ const deleteFromMenuAndAPI = async () => {
 }
 
 // add new Animal (create)
+const addNewAnimal = async () => {
+    
+}
 
+// add new Outfit (create)
 
 // OLD - TO BE REUSED
 const showAnimals = async (animals) => {

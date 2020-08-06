@@ -29,7 +29,7 @@
     </nav>
     <div class="collapse" id="navbarToggleExternalContent" style="background-color: #58bca9;">
         <div id="display-links" style="background-color: #58bca9;"> 
-          <h4 class="text-muted">View all:</h4>
+          <h4 style="color: #075663;">View all:</h4>
             <a href="./animals" class="nav-link" id="display-all-animals">
                 <span class="text-white">Animals</span>
             </a>
@@ -39,12 +39,15 @@
             </a>
         </div>
         <div id="create-links" style="background-color: #58bca9;"> 
-            <h4 class="text-muted">Add new:</h4>
-            <a href="./animals" class="nav-link" id="add-new-animal">
+            <!-------Add new: --- HEADING ------->
+            <h4 style="color: #075663;">Add new:</h4>
+            <!-------Click to display modal to add new animal------->
+            <a href="./animals" id="add-new-animal" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
                 <span class="text-white">Animals</span>
             </a>
             <br/>
-            <a href="./outfits" class="nav-link" id="add-new-outfit">
+            <!-------Click to display modal to add new outfit------->
+            <a href="./outfits" id="add-new-outfit" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
                 <span class="text-white">Outfits</span>
             </a>
         </div>
@@ -77,17 +80,34 @@
 
     </div>
 
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add a new animal to the database</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #075663;">Add this animal!</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 
-
-<footer style="background-color: #58bca9;">
-    <p>Weily Lang 2020</p>
+<footer style="background-color: #58bca9; margin-bottom: 0;" class="footer">
+    Weily Lang 2020
 </footer>  
  <!--Bootstrap-->
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 </body>
 </html>
