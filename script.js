@@ -94,7 +94,6 @@ const updateAnimalWithOutfit = async () => {
         console.log(updatedOutfit.name)
     } 
     getUpdatedOutfit();
-
 }
 
 // EMPTY THE MENUS - OBSOLETE????????
@@ -130,7 +129,6 @@ const emptyMenus = async () => {
 const deleteFromMenuAndAPI = async () => {
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
-    // exit function if selection is a prompt rather than an animal
     if ($selectAnimal.val() !== 0 || null || undefined) {
         // delete at /:id
         await fetch(`${URL}/animals/${$selectAnimal.val()}`, {
@@ -138,6 +136,7 @@ const deleteFromMenuAndAPI = async () => {
         })
         $selectAnimal.empty()
     };
+    populateAnimalMenu();
 
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
@@ -149,12 +148,8 @@ const deleteFromMenuAndAPI = async () => {
         $selectOutfit.empty()
     }
     // REFRESH page content
-
-    // $animalsContainer.empty();
-    populateAnimalMenu();
     populateOutfitMenu();
 
-    // TO DO: repopulate animalsContainer (first, make animal cards...)
 }
 
 // add new Animal (create)

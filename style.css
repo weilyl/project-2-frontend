@@ -16,13 +16,18 @@ header {
 }
 
 #logo {
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: -10px;
     height: 30vh;
+    justify-self: space-around;
 }
 
 nav {
     margin: 0;
+}
+
+#hi-isabelle {
+    justify-self: center;
 }
 
 select {
