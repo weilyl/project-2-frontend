@@ -40,25 +40,25 @@ The final result of this project will be a functional full-stack CRUD site and A
 | Hamburger click | M | 2hr | 0.5hr |
 | Hamburger show | M | 2hr | 0.5hr |
 | Hamburger menu (mobile) | H | 3hr | 1hr |
-| CSS styling | L | 5hr | -hr| 
-| CSS media queries/responsiveness | L | 5hr | -hr |
+| CSS styling | L | 5hr | 5hr| 
+| CSS media queries/responsiveness | L | 5hr | 2hr |
 |
 |
-| Total | H | 27hrs | 34hrs | 
+| Total | H | 27hrs | 39hrs | 
 
 
 #### PostMVP 
 
 | Component | Priority | Estimated Time | Actual Time |
 | --- | :---: |  :---: | :---: | 
-| Document Issues | M | 3hr | -hr |
+| Document Issues | M | 3hr | 1hr |
 | Seeding data | M | 2hr | -hr |
 | Show existing data as cards | H | 5hr | -hr |
-| View existing data by animals (as cards) | L | 10hr | -hr |
-| View existing data by clothing item (as cards) | L | 10hr | -hr |
+| View existing data by animals (as cards) | L | 10hr | 2hr |
+| View existing data by clothing item (as cards) | L | 10hr | 2hr |
 | 
 |
-| Total | H | 30hrs| -hrs | 
+| Total | H | 30hrs| 5hrs | 
 
 ## Additional Libraries
 
