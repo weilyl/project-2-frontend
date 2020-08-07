@@ -47,13 +47,17 @@ select {
 
 #display-animals-here {
     margin: 1px;
-    justify-content: space-around;
+    justify-self: center;
     text-align: center;
 }
 
 #display-animals-here > li {
     width: 70vw;
     list-style: none;
+}
+
+#display-animals-here > li > img {
+    max-width: 65vw;
 }
 
 footer {

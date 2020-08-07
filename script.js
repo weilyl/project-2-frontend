@@ -19,7 +19,7 @@ let $selectedOutfit = ""; // Outfit selected from menu for pairing up/updating/d
 // populateOutfitMenu
 // updateAnimalWithOutfit ---------------NEEDS WORK
 // emptyMenus >> emptyAnimalMenu && emptyOutfitMenu MAY BE OBSOLETE
-// deleteFromMenuAndAPI ------------ refreshes menu by calling on populateAnimalMenu and populateOutfitMenu and emptying both menus 
+// deleteFromMenuAndAPI ------------ refreshes menu by calling on populateAnimalMenu and populateOutfitMenu and emptying both menus -
 // addNewAnimal ----------NEED TO EMPTY MENU & REPOPULATE (maybe container too??)
 // addNewOutfit ----------NEED TO EMPTY MENU & REPOPULATE (maybe container too??)
 
@@ -183,9 +183,24 @@ const addNewOutfit = async () => {
     // populateOutfitMenu();
 }
 
-// OLD - TO BE REUSED
+// show all outfits
+const showOutfits = async () => {
+    $('#display-animals-here').empty();
+    const response = await fetch(`${URL}/outfits`);
+    const outfits = await response.json();
+        outfits.forEach((outfit) => {
+            console.log(outfit.photo);
+            const $eachOutfit = $('<li>');
+            const $eachOutfitName = $('<h1>').text(outfit.name);
+            $eachOutfit.append($eachOutfitName);
+            const $eachOutfitPhoto = $('<img>').attr("src", outfit.photo).attr("alt", outfit["photo-alt-text"]);
+            $eachOutfit.append($eachOutfitPhoto)
+            $('#display-animals-here').append($eachOutfit)
+        })
+}
+
 const showAnimals = async () => {
-    console.log("why?");
+    $('#display-animals-here').empty();
     const response = await fetch(`${URL}/animals`);
     const animals = await response.json();
         animals.forEach((animal) => {
@@ -214,6 +229,7 @@ $('#addAnimalButton').on('click', addNewAnimal);
 $('#addOutfitButton').on('click', addNewOutfit);
 $("button#setfave").on('click', updateAnimalWithOutfit);
 $('#display-all-animals').on('click', showAnimals);
+$('#display-all-outfits').on('click', showOutfits);
 
 //////////////
 // OLD TESTS
