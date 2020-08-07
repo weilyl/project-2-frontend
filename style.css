@@ -1,6 +1,7 @@
 body {
     margin: 0 auto;
     /* box-sizing: border-box; */
+    background-color: #f9f6e5
 }
 
 header {
@@ -39,6 +40,15 @@ select {
     white-space: normal;
 }
 
+.photo {
+    max-width: 70vw;
+}
+
+.display-card {
+    background-color: #f7b58c;
+    border-radius: 5%;
+    padding: 5vw;
+}
 
 #show-all {
     display: grid;

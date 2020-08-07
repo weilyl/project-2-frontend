@@ -14,11 +14,12 @@ const $updateOutfitButton = $('#updateOutfit');
 const $animalsContainer = $("#display-animals-here");
 let $selectedAnimal = ""; // Animal selected from menu for pairing up/updating/deleting
 let $selectedOutfit = ""; // Outfit selected from menu for pairing up/updating/deleting
+let animalId = '';
+let outfitId = '';
 ///// functions
 // populateAnimalMenu
 // populateOutfitMenu
 // updateAnimalWithOutfit ---------------NEEDS WORK
-// emptyMenus >> emptyAnimalMenu && emptyOutfitMenu MAY BE OBSOLETE
 // deleteFromMenuAndAPI ------------ refreshes menu by calling on populateAnimalMenu and populateOutfitMenu and emptying both menus -
 // addNewAnimal 
 // addNewOutfit 
@@ -49,7 +50,7 @@ const populateOutfitMenu = async () => {
 
     // fetch request
     const response = await fetch(`${URL}/outfits`);
-    const data = await response.json();
+    const data = await response.json()
 
     // create option tags for each JSON object retrieved from GET request
     data.forEach((outfit) => {
@@ -61,68 +62,61 @@ const populateOutfitMenu = async () => {
 // Reference animals and outfits
     // One quirky side effect of PUT controller is that getAllAnimals returns all properties of referenced outfits, while getAllOutfits only returns an array of object ID's belonging to reference animals even though functions are essentially the same
 const updateAnimalWithOutfit = async () => {
-    const animalId = $('#selectanimal').val();
-    const outfitId = $('#selectoutfit').val();
-    console.log(animalId)
-    console.log(outfitId)
-    // const updatedAnimal = {
-    //     outfits: outfitId
-    // };
-    // const updatedOutfit = {
-    //     animals: animalId
-    // };
-    const matching = await fetch(`${URL}/animals/match/${animalId}/${outfitId}`,
+
+    animalId = $('#selectanimal').val();
+    outfitId = $('#selectoutfit').val();
+
+    const dataToSend = [
+        {animals: animalId},
+        {outfits: outfitId}
+    ];
+    
+    const response = await fetch(`${URL}/animals/match/${animalId}/${outfitId}`,
     {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json'
-        }, body: JSON.stringify(data)//,
-        //body: JSON.stringify(updatedOutfit)
+        }, body: JSON.stringify(dataToSend)
     })
-    console.log(matching); // Response object
-    //const data = matching.json;
-    console.log(matching.name) // undefined
-    const getUpdatedAnimal = async () => {
+    const data = await response.json();
+    console.log(data);
+    const $div = $('<div>').addClass("display-card");
+    $animalsContainer.prepend($div)
+    const getUpdatedAnimal = async (animalId) => {
         const response = await fetch(`${URL}/animals/${animalId}`)
-        const updatedAnimal = response.json;
-        console.log(updatedAnimal.name)
+        const updatedAnimal = await response.json(); 
+        console.log(updatedAnimal)
+
+        const $h1 = $('<h1>').text(updatedAnimal.name);
+        $div.append($h1);
+        const $img = $('<img>').attr("src", updatedAnimal.photo).attr("alt", updatedAnimal["photo-alt-text"]).addClass('photo');
+        $div.append($img);
     } 
-    getUpdatedAnimal();
-    const getUpdatedOutfit = async () => {
+    const getUpdatedOutfit = async (outfitId) => {
         const response = await fetch(`${URL}/outfits/${outfitId}`)
-        const updatedOutfit = response.json;
-        console.log(updatedOutfit.name)
+        const updatedOutfit = await response.json();
+        console.log(updatedOutfit)
+
+        const $h1 = $('<h1>').text(updatedOutfit.name);
+        $div.append($h1);
+        const $img = $('<img>').attr("src", updatedOutfit.photo).attr("alt", updatedOutfit["photo-alt-text"]).addClass('photo');
+        $div.append($img);
     } 
-    getUpdatedOutfit();
+
+    getUpdatedAnimal(animalId);
+    getUpdatedOutfit(outfitId);
 }
 
-// EMPTY THE MENUS - OBSOLETE????????
-// to be used when deleting or updating animals and/or outfits so that the options stay current 
-const emptyMenus = async () => {
-
-    // exit function if selection is a prompt rather than an animal
-    const emptyAnimalMenu = async () => {
-        $selectAnimal.each(function(index,thing){
-            console.log(this.value)
-            if (this.value !== 0 || null || undefined){
-            this.remove()
-            }
-        })
-    }
-    // emptyAnimalMenu();
-
-    // exit function if selection is a prompt rather than an animal
-    const emptyOutfitMenu = async () => {
-        $selectOutfit.each(function(index,thing){
-            console.log(this.disabled)
-            if (this.disabled !== 0 || null || undefined) {
-            this.remove()
-            }
-        })
-    }
-    // emptyOutfitMenu();
-}
-
+// const getUpdatedAnimal = async (animalId) => {
+//     const response = await fetch(`${URL}/animals/${animalId}`)
+//     const updatedAnimal = await response.json();
+//     console.log(updatedAnimal)
+// } 
+// const getUpdatedOutfit = async (outfitId) => {
+//     const response = await fetch(`${URL}/outfits/${outfitId}`)
+//     const updatedOutfit = await response.json();
+//     console.log(updatedOutfit)
+// } 
 
 
 // Defining DELETE BUTTON function (capable of deleting both)
@@ -245,14 +239,3 @@ $('#addOutfitButton').on('click', addNewOutfit);
 
 $('#display-all-animals').on('click', showAnimals);
 $('#display-all-outfits').on('click', showOutfits);
-
-//////////////
-// OLD TESTS
-//////////////
-
-// Hello world test
-// fetch(URL)
-// .then(data => {
-//     let $hello = $('<h1>').text("Hello world");
-//     $('body').append($hello);
-// })

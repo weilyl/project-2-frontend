@@ -10,6 +10,14 @@ ACPC modal bg beige: f9f6e5 RGB(249, 246, 229)
 ACPC button dark green: 075663 RGB(7, 86, 99)
 * change nav links to look like buttons w this bg color
 
+dark yellow stripe: ffdd8e RGB(255, 221, 142)
+lighter yellow stripe: ffe39f RGB(255, 227, 159)
+
+loading wheel light pink f7b58c RGB(247, 181, 140)
+loading wheel dark pink ff6836 RGB(255,104, 54)
+
+border perky bright sky blue 9cdbfb RGB(156, 219, 251)
+
   https://www.uokpl.rs/fpng/f/314-3145799_isabelle-animal-crossing.png 
 
   https://i.redd.it/rksps4rmyt521.png 
