@@ -143,31 +143,37 @@
 
 <!---- Drop-down menus ---->
 <div id="show-all">
-  <img id="hi-isabelle" src="https://www.pngjoy.com/pngl/215/4201817_ice-climbers-isabelle-animal-crossing-smash-png-download.png" alt="A photo of Isabelle waving in her green checkered sweater vest and dark green pencil skirt">
-
+  <img id="hi-isabelle" 
+    src="https://www.pngjoy.com/pngl/215/4201817_ice-climbers-isabelle-animal-crossing-smash-png-download.png" 
+    alt="A photo of Isabelle waving in her green checkered sweater vest and dark green pencil skirt">
   <div id="menus-container">
-    <!---- Select an animal ---->
-    <label id="animals-menu">Pick animal: </label>
-    <p>(Don't see your favorite animals? Add them in the menu above!)</p>
-    <select name="animals" id="selectanimal">
-        <!-- <optgroup val="0" disabled selected>Please choose an animal</optgroup> -->
-        <!-- <option value="object-id">Animal Name</option> -->
-        <!-- <option val="0" disabled selected>Don't see your favorite animal? Add them in the menu above!</option> -->
-        <!-----OBSOLETE ABOVE ------->
+    <div id="drop-downs-only">
+      <div id="animal-menu-only">
+        <!---- Select an animal ---->
+        <label id="animals-menu">Pick animal: </label>
+        <p>(Don't see your favorite animals? Add them in the menu above!)</p>
+        <select name="animals" id="selectanimal">
+            <!-- <optgroup val="0" disabled selected>Please choose an animal</optgroup> -->
+            <!-- <option value="object-id">Animal Name</option> -->
+            <!-- <option val="0" disabled selected>Don't see your favorite animal? Add them in the menu above!</option> -->
+            <!-----OBSOLETE ABOVE ------->
 
-        <!--optgroup label="Don't see your favorite animal? Add them in the menu above!"></optgroup-->
-    </select>
-
-    <!---- MENU Select an outfit ---->
-    <label id="outfits-menu" for="selectoutfit">Pick a clothing item: </label>
-    <p>(Don't see your favorite items? Add them in the menu above!)</p>
-    <select name="outfits" id="selectoutfit">
-        <!-- <option val="0" disabled selected>Please choose a clothing item</option> -->
-        <!-- <option value="object-id">Animal Name</option> -->
-        <!-- post-MVP: add multiple attribute & optgroup tag for different categories of clothing & multiple clothing items per outfit -->
-        <!-- <option val="0" disabled selected>Don't see your favorite items? Add them in the menu above!</option> -->
-        <!--optgroup label="Don't see your favorite items? Add them in the menu above!"></optgroup-->
-    </select>
+            <!--optgroup label="Don't see your favorite animal? Add them in the menu above!"></optgroup-->
+        </select>
+      </div>
+      <div id="outfit-menu-only">
+        <!---- MENU Select an outfit ---->
+        <label id="outfits-menu" for="selectoutfit">Pick a clothing item: </label>
+        <p>(Don't see your favorite items? Add them in the menu above!)</p>
+        <select name="outfits" id="selectoutfit">
+            <!-- <option val="0" disabled selected>Please choose a clothing item</option> -->
+            <!-- <option value="object-id">Animal Name</option> -->
+            <!-- post-MVP: add multiple attribute & optgroup tag for different categories of clothing & multiple clothing items per outfit -->
+            <!-- <option val="0" disabled selected>Don't see your favorite items? Add them in the menu above!</option> -->
+            <!--optgroup label="Don't see your favorite items? Add them in the menu above!"></optgroup-->
+        </select>
+     </div>
+    </div>
 
     <div id="buttons-container">
       <!---- Buttons for drop-down menu ---->
@@ -179,10 +185,10 @@
     </div>
   </div>
 
-    <!---- Div Container to display animal cards --->
-    <div id="display-animals-here">
-        
-    </div>
+  <!---- Div Container to display animal cards --->
+  <div id="display-animals-here">
+      
+  </div>
 
 </div>
 
