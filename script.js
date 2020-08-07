@@ -20,8 +20,8 @@ let $selectedOutfit = ""; // Outfit selected from menu for pairing up/updating/d
 // updateAnimalWithOutfit ---------------NEEDS WORK
 // emptyMenus >> emptyAnimalMenu && emptyOutfitMenu MAY BE OBSOLETE
 // deleteFromMenuAndAPI ------------ refreshes menu by calling on populateAnimalMenu and populateOutfitMenu and emptying both menus -
-// addNewAnimal ----------NEED TO EMPTY MENU & REPOPULATE (maybe container too??)
-// addNewOutfit ----------NEED TO EMPTY MENU & REPOPULATE (maybe container too??)
+// addNewAnimal 
+// addNewOutfit 
 // showAnimals & showOutfits ---- empties div at first, then displays all animals/outfits at once *MEDIA QUERY*
 
 
@@ -59,7 +59,7 @@ const populateOutfitMenu = async () => {
 }
 
 // Reference animals and outfits
-
+    // One quirky side effect of PUT controller is that getAllAnimals returns all properties of referenced outfits, while getAllOutfits only returns an array of object ID's belonging to reference animals even though functions are essentially the same
 const updateAnimalWithOutfit = async () => {
     const animalId = $('#selectanimal').val();
     const outfitId = $('#selectoutfit').val();
@@ -76,12 +76,25 @@ const updateAnimalWithOutfit = async () => {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json'
-        }, body: JSON.stringify()//,
+        }, body: JSON.stringify(data)//,
         //body: JSON.stringify(updatedOutfit)
     })
-    console.log(matching);
-    const data = matching.json;
-    console.log(matching.name)
+    console.log(matching); // Response object
+    //const data = matching.json;
+    console.log(matching.name) // undefined
+    const getUpdatedAnimal = async () => {
+        const response = await fetch(`${URL}/animals/${animalId}`)
+        const updatedAnimal = response.json;
+        console.log(updatedAnimal.name)
+    } 
+    getUpdatedAnimal();
+    const getUpdatedOutfit = async () => {
+        const response = await fetch(`${URL}/outfits/${outfitId}`)
+        const updatedOutfit = response.json;
+        console.log(updatedOutfit.name)
+    } 
+    getUpdatedOutfit();
+
 }
 
 // EMPTY THE MENUS - OBSOLETE????????
@@ -110,6 +123,8 @@ const emptyMenus = async () => {
     }
     // emptyOutfitMenu();
 }
+
+
 
 // Defining DELETE BUTTON function (capable of deleting both)
 const deleteFromMenuAndAPI = async () => {
@@ -160,9 +175,8 @@ const addNewAnimal = async () => {
         body: JSON.stringify(newAnimal)
     })
     console.log(newAnimal);
-    // emptyAnimalMenu();
-    // $selectAnimal.empty();
-    // populateAnimalMenu();
+    $selectAnimal.empty();
+    populateAnimalMenu();
 }
 
 // add new outfit to the database (create)
@@ -183,9 +197,8 @@ const addNewOutfit = async () => {
         body: JSON.stringify(newOutfit)
     })
     console.log(newOutfit);
-    // emptyOutfitMenu();
-    // $selectOutfit.empty();
-    // populateOutfitMenu();
+    $selectOutfit.empty();
+    populateOutfitMenu();
 }
 
 // show all outfits
