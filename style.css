@@ -100,6 +100,19 @@ label {
 #buttons-container > * {
     width: 50vw;
     align-items: space-evenly;
+    margin: 10px;
+    border-radius: 5px;
+    border: 0;
+    padding: 5px;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+#setfave {
+    background-color: #ffdd8e;
+}
+
+#deleteSelected {
+    background-color: #ff6836;
 }
 
 
@@ -130,6 +143,7 @@ footer {
         display: grid;
         grid-template-areas: 
         "animalmenu outfitmenu";
+        margin: 20px;
     }
     select {
         /*https://github.com/select2/select2/issues/4585*/
@@ -166,14 +180,31 @@ footer {
     #buttons-container {
         padding: 10px;
         align-items: center;
+        /* justify-content: space-evenly; */
         display: grid;
+        grid-template-areas: 
+        "setbutton deletebutton";
     }
     
     #buttons-container > * {
         width: 150px;
         align-items: space-evenly;
         justify-items: center;
-        margin: 10px;
+        margin: 20px;
+        border-radius: 5px;
+        border: 0;
+        padding: 5px;
+        box-shadow: 0 0 15px 4px rgba(0,0,0,0.06)
+    }  
+
+    #setfave {
+        grid-area: setbutton;
+        background-color: #ffdd8e;
+    }
+
+    #deleteSelected {
+        grid-area: deletebutton;
+        background-color: #ff6836;
     }
     
 
