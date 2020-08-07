@@ -197,10 +197,10 @@ const showOutfits = async () => {
     const outfits = await response.json();
         outfits.forEach((outfit) => {
             console.log(outfit.photo);
-            const $eachOutfit = $('<li>');
+            const $eachOutfit = $('<div>').addClass("display-card");
             const $eachOutfitName = $('<h1>').text(outfit.name);
             $eachOutfit.append($eachOutfitName);
-            const $eachOutfitPhoto = $('<img>').attr("src", outfit.photo).attr("alt", outfit["photo-alt-text"]);
+            const $eachOutfitPhoto = $('<img>').attr("src", outfit.photo).attr("alt", outfit["photo-alt-text"]).addClass("photo");
             $eachOutfit.append($eachOutfitPhoto)
             $('#display-animals-here').append($eachOutfit)
         })
@@ -212,10 +212,10 @@ const showAnimals = async () => {
     const animals = await response.json();
         animals.forEach((animal) => {
             console.log(animal.photo);
-            const $eachAnimal = $('<li>');
+            const $eachAnimal = $('<div>').addClass("display-card");
             const $eachAnimalName = $('<h1>').text(animal.name);
             $eachAnimal.append($eachAnimalName);
-            const $eachAnimalPhoto = $('<img>').attr("src", animal.photo).attr("alt", animal["photo-alt-text"]);
+            const $eachAnimalPhoto = $('<img>').attr("src", animal.photo).attr("alt", animal["photo-alt-text"]).addClass("photo");
             $eachAnimal.append($eachAnimalPhoto)
             $('#display-animals-here').append($eachAnimal)
         })

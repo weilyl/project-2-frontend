@@ -27,17 +27,24 @@ nav {
     margin: 0;
 }
 
+#display-links, #create-links {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
 #hi-isabelle {
+    padding-top: 20px;
     justify-self: center;
 }
 
 select {
     /*https://github.com/select2/select2/issues/4585*/
-    max-width: 200px;
+    width: 70vw;
     overflow: hidden;
     /*Altered two below to make word wrap work */
     word-wrap: normal !important;
     white-space: normal;
+    font-size: 3vw;
 }
 
 .photo {
@@ -47,36 +54,127 @@ select {
 .display-card {
     background-color: #f7b58c;
     border-radius: 5%;
-    padding: 5vw;
+    padding: 5px;
 }
 
 #show-all {
     display: grid;
     background-color: #f9f6e5;
     align-content: space-around;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #menus-containers {
     display: grid;
 }
 
+label {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#drop-downs-only {
+    display: grid;
+    grid-template-areas: 
+    "animalmenu"
+    "outfitmenu";
+}
+
+#animal-menu-only {
+    grid-area: animalmenu;
+    margin: 5px;
+}
+
+#outfit-menu-only {
+    grid-area: outfitmenu;
+    margin: 5px;
+}
+
+#buttons-container {
+    padding: 10px;
+    justify-content: center;
+    display: grid;
+}
+
+#buttons-container > * {
+    width: 50vw;
+    align-items: space-evenly;
+}
+
+
 #display-animals-here {
-    margin: 1px;
     justify-self: center;
     text-align: center;
     padding-bottom: 20px
 }
 
-#display-animals-here > li {
+#display-animals-here > div {
     width: 70vw;
     list-style: none;
+    margin: 10px
 }
 
-#display-animals-here > li > img {
+#display-animals-here > div > img {
     max-width: 65vw;
 }
 
 footer {
     color: #075663;
     padding: 10px;
+}
+
+
+@media only screen and (min-width: 650px) {
+    #drop-downs-only {
+        display: grid;
+        grid-template-areas: 
+        "animalmenu outfitmenu";
+    }
+    select {
+        /*https://github.com/select2/select2/issues/4585*/
+        width: 35vw;
+        overflow: hidden;
+        /*Altered two below to make word wrap work */
+        word-wrap: normal !important;
+        white-space: normal;
+        font-size: 3vw;
+    }
+
+    #display-animals-here {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #display-animals-here > div {
+        width: 250px;
+        list-style: none;
+        margin: 10px;
+    }
+
+    #display-animals-here > div > img{
+       max-width: 235px;
+        list-style: none;
+    }
+
+    .photo {
+        max-width: 250px;
+    }
+
+    #buttons-container {
+        padding: 10px;
+        align-items: center;
+        display: grid;
+    }
+    
+    #buttons-container > * {
+        width: 150px;
+        align-items: space-evenly;
+        justify-items: center;
+        margin: 10px;
+    }
+    
+
 }
