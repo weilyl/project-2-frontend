@@ -14,29 +14,40 @@ const $updateOutfitButton = $('#updateOutfit');
 const $animalsContainer = $("#display-animals-here");
 let $selectedAnimal = ""; // Animal selected from menu for pairing up/updating/deleting
 let $selectedOutfit = ""; // Outfit selected from menu for pairing up/updating/deleting
-
+///// functions
+// populateAnimalMenu
+// populateOutfitMenu
+// updateAnimalWithOutfit ---------------NEEDS WORK
+// emptyMenus >> emptyAnimalMenu && emptyOutfitMenu MAY BE OBSOLETE
+// deleteFromMenuAndAPI ------------ refreshes menu by calling on populateAnimalMenu and populateOutfitMenu and emptying both menus 
+// addNewAnimal ----------NEED TO EMPTY MENU & REPOPULATE (maybe container too??)
+// addNewOutfit ----------NEED TO EMPTY MENU & REPOPULATE (maybe container too??)
 
 //////////////////////
 // FUNCTION DEFINITIONS
 //////////////////////
 
 // Get all animals from API and populate the drop-down select 
+
+
 const populateAnimalMenu = async () => {
+
     const response = await fetch(`${URL}/animals`);
     const data = await response.json();
-    // console.log(data);
 
     data.forEach((animal) => {
         const $option = $('<option>').attr('value', animal._id).text(animal.name);
         $selectAnimal.append($option);
-        // console.log(animal._id);
     })
 }
 
 // Get all outfits from API and populate the drop-down select
 const populateOutfitMenu = async () => {
+
+    // fetch request
     const response = await fetch(`${URL}/outfits`);
     const data = await response.json();
+
     // create option tags for each JSON object retrieved from GET request
     data.forEach((outfit) => {
         const $option = $('<option>').attr('value', outfit._id).text(outfit.name);
@@ -49,74 +60,80 @@ const populateOutfitMenu = async () => {
 const updateAnimalWithOutfit = async () => {
     const animalId = $('#selectAnimal').val();
     const outfitId = $('#selectOutfit').val();
-    const updatedAnimal = {
-        outfits: outfitId
-    };
-    const updatedOutfit = {
-        animals: animalId
-    };
+    // const updatedAnimal = {
+    //     outfits: outfitId
+    // };
+    // const updatedOutfit = {
+    //     animals: animalId
+    // };
     const matching = await fetch(`${URL}/match/${animalId}/${outfitId}`,
     {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json'
-        }, body: JSON.stringify(newObj)
+        }, body: JSON.stringify(updatedAnimal),
+        body: JSON.stringify(updatedOutfit)
     })
+    console.log(updatedAnimal, updatedOutfit);
 }
 
 $("button#setfave").on('click', updateAnimalWithOutfit);
 
-// EMPTY THE MENUS
+// EMPTY THE MENUS - OBSOLETE????????
 // to be used when deleting or updating animals and/or outfits so that the options stay current 
-// const emptyMenus = async () => {
-//     //$selectedAnimal = $('#selectoutfit option:selected');
-//         // exit function if selection is a prompt rather than an animal
-//         if ($selectAnimal.val() == 0){
-//             return false
-//         } else {
-//             $selectAnimal.empty()
-//         }
+const emptyMenus = async () => {
 
-//     //$selectedOutfit = $('#selectoutfit option:selected');
-//         // exit function if selection is a prompt rather than an animal
-//         if ($selectOutfit.val() == 0){
-//             return false
-//         } else {
-//             $selectOutfit.empty()
-//         }
-// }
+    // exit function if selection is a prompt rather than an animal
+    const emptyAnimalMenu = async () => {
+        $selectAnimal.each(function(index,thing){
+            console.log(this.value)
+            if (this.value !== 0 || null || undefined){
+            this.remove()
+            }
+        })
+    }
+    // emptyAnimalMenu();
+
+    // exit function if selection is a prompt rather than an animal
+    const emptyOutfitMenu = async () => {
+        $selectOutfit.each(function(index,thing){
+            console.log(this.disabled)
+            if (this.disabled !== 0 || null || undefined) {
+            this.remove()
+            }
+        })
+    }
+    // emptyOutfitMenu();
+}
 
 // Defining DELETE BUTTON function (capable of deleting both)
 const deleteFromMenuAndAPI = async () => {
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
     // exit function if selection is a prompt rather than an animal
-    if ($selectAnimal.val() === 0 || null || undefined) {
-        // return false
-        console.log($selectAnimal.val());
-    } else {
+    if ($selectAnimal.val() !== 0 || null || undefined) {
         // delete at /:id
         await fetch(`${URL}/animals/${$selectAnimal.val()}`, {
             method: "delete"
         })
+        $selectAnimal.empty()
     };
 
     // DELETE animal from collection
     // post-MVP add a warning modal or alert when clicked
     // exit function if selection is a prompt rather than an animal
-    if ($selectOutfit.val() === 0 || null || undefined) {
-        return false} 
-    else {
+    if ($selectOutfit.val() !== 0 || null || undefined) {
         await fetch(`${URL}/outfits/${$selectOutfit.val()}`, {
         method: "delete"
         })
+        $selectOutfit.empty()
     }
-    $animalsContainer.empty();
-    //emptyMenus();
-    $selectAnimal.empty();
-    $selectOutfit.empty();
+    // REFRESH page content
+
+    // $animalsContainer.empty();
     populateAnimalMenu();
     populateOutfitMenu();
+
     // TO DO: repopulate animalsContainer (first, make animal cards...)
 }
 
@@ -138,8 +155,9 @@ const addNewAnimal = async () => {
         body: JSON.stringify(newAnimal)
     })
     console.log(newAnimal);
-    $selectAnimal.empty();
-    populateAnimalMenu();
+    // emptyAnimalMenu();
+    // $selectAnimal.empty();
+    // populateAnimalMenu();
 }
 
 // add new outfit to the database (create)
@@ -160,20 +178,25 @@ const addNewOutfit = async () => {
         body: JSON.stringify(newOutfit)
     })
     console.log(newOutfit);
-    $selectOutfit.empty();
-    populateOutfitMenu();
+    // emptyOutfitMenu();
+    // $selectOutfit.empty();
+    // populateOutfitMenu();
 }
 
-// add new Outfit (create)
-
 // OLD - TO BE REUSED
-const showAnimals = async (animals) => {
-    animals.forEach(animal => {
-        $li = $('<li>').html(`
-        <h1>${animal.name}</h1>
-        <img src="${animal.photo}" alt="${animal.photo-alt-text}">`);
-        $('body').append($li);
-    })
+const showAnimals = async () => {
+    console.log("why?");
+    const response = await fetch(`${URL}/animals`);
+    const animals = await response.json();
+        animals.forEach((animal) => {
+            console.log(animal.photo);
+            const $eachAnimal = $('<li>');
+            const $eachAnimalName = $('<h1>').text(animal.name);
+            $eachAnimal.append($eachAnimalName);
+            const $eachAnimalPhoto = $('<img>').attr("src", animal.photo).attr("alt", animal["photo-alt-text"]);
+            $eachAnimal.append($eachAnimalPhoto)
+            $('#display-animals-here').append($eachAnimal)
+        })
 }
 
 //////////////////////
@@ -189,14 +212,12 @@ $deleteButton.on('click', deleteFromMenuAndAPI);
 
 $('#addAnimalButton').on('click', addNewAnimal);
 $('#addOutfitButton').on('click', addNewOutfit);
+$("button#setfave").on('click', updateAnimalWithOutfit);
+$('#display-all-animals').on('click', showAnimals);
 
 //////////////
 // OLD TESTS
 //////////////
-// fetch(URL)
-// .then(data => {
-//     getAnimals()
-// })
 
 // Hello world test
 // fetch(URL)

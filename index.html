@@ -18,7 +18,10 @@
 <body>
 <header style="background-color: #f9f6e5;">
     <!-------LOGO------>
-    <img src="http://assets.stickpng.com/images/5b4a216ec051e602a568cd7e.png" alt="logo for Nintendo's Animal Crossing Pocket">
+    <div id="header-logo-container">
+      <img src="http://assets.stickpng.com/images/5b4a216ec051e602a568cd7e.png" 
+      alt="logo for Nintendo's Animal Crossing Pocket" id="logo">
+    </div>
 </header>
 
 <!---- HAMBURGER MENU & NAVBAR ---->
@@ -31,11 +34,11 @@
     <div class="collapse" id="navbarToggleExternalContent" style="background-color: #58bca9;">
         <div id="display-links" style="background-color: #58bca9;"> 
           <h4 style="color: #075663;">View all:</h4>
-            <a href="./animals" class="nav-link" id="display-all-animals">
+            <a href="#show-all" class="nav-link" id="display-all-animals">
                 <span class="text-white">Animals</span>
             </a>
             <br/>
-            <a href="./outfits" class="nav-link" id="display-all-outfits">
+            <a href="#show-all" class="nav-link" id="display-all-outfits">
                 <span class="text-white">Outfits</span>
             </a>
         </div>
@@ -139,29 +142,37 @@
 
 <!---- Drop-down menus ---->
 <div id="show-all">
-
+  <div id="menus-container">
     <!---- Select an animal ---->
+    <label id="animals-menu">Pick animal: </label>
+    <p>(Don't see your favorite animals? Add them in the menu above!)</p>
     <select name="animals" id="selectanimal">
-        <option val="0">Please choose an animal</option>
+        <!-- <optgroup val="0" disabled selected>Please choose an animal</optgroup> -->
         <!-- <option value="object-id">Animal Name</option> -->
-        <option val="0">Don't see your favorite animal? Add them in the menu above!</option>
+        <!-- <option val="0" disabled selected>Don't see your favorite animal? Add them in the menu above!</option> -->
+        <!-----OBSOLETE ABOVE ------->
+
         <!--optgroup label="Don't see your favorite animal? Add them in the menu above!"></optgroup-->
     </select>
 
     <!---- Select an animal ---->
+    <label id="outfits-menu">Pick a clothing item: </label>
+    <p>(Don't see your favorite items? Add them in the menu above!)</p>
     <select name="outfits" id="selectoutfit">
-        <option val="0">Please choose a clothing item</option>
+        <!-- <option val="0" disabled selected>Please choose a clothing item</option> -->
         <!-- <option value="object-id">Animal Name</option> -->
         <!-- post-MVP: add multiple attribute & optgroup tag for different categories of clothing & multiple clothing items per outfit -->
-        <option val="0">Don't see your favorite items? Add them in the menu above!</option>
+        <!-- <option val="0" disabled selected>Don't see your favorite items? Add them in the menu above!</option> -->
         <!--optgroup label="Don't see your favorite items? Add them in the menu above!"></optgroup-->
     </select>
 
     <!---- Buttons for drop-down menu ---->
     <button id="setfave">Make a new card!</button>
     <button id="deleteSelected">Delete Selection(s)</button>
+
     <!--button id="updateAnimal">Update Animal</button-->
     <button id="updateOutfit">Update Outfit</button>
+  </div>
 
     <!---- Div Container to display animal cards --->
     <div id="display-animals-here">
@@ -173,10 +184,15 @@
 <footer style="background-color: #58bca9; margin-bottom: 0;" class="footer">
     Weily Lang 2020
 </footer>  
+
 <!--Bootstrap-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" 
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"              
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"   
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

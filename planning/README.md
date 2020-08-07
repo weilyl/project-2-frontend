@@ -34,17 +34,17 @@ The final result of this project will be a functional full-stack CRUD site and A
 
 | Component | Priority | Estimated Time | Actual Time |
 | --- | :---: | :---: | :---: | 
-| Base HTML elements, boiler plate, link docs | H | 2hr | -hr |
-| Current animals | H | 3hr | -hr | 
-| jQuery | H | 5hr | -hr |
-| Hamburger click | M | 2hr | -hr |
-| Hamburger show | M | 2hr | -hr |
-| Hamburger menu (mobile) | H | 3hr | -hr |
+| Base HTML elements, boiler plate, link docs | H | 2hr | 3hr |
+| Current animals | H | 3hr | 5hr | 
+| jQuery | H | 5hr | 24hr |
+| Hamburger click | M | 2hr | 0.5hr |
+| Hamburger show | M | 2hr | 0.5hr |
+| Hamburger menu (mobile) | H | 3hr | 1hr |
 | CSS styling | L | 5hr | -hr| 
 | CSS media queries/responsiveness | L | 5hr | -hr |
 |
 |
-| Total | H | 27hrs | -hrs | 
+| Total | H | 27hrs | 34hrs | 
 
 
 #### PostMVP 
@@ -84,6 +84,25 @@ Error info?
 
 **RESOLUTION**: 
 
+**ERROR**: 
+
+Width of the page would either be too wide (forcing a horizontal scroll) or there would be a blank vertical stripe on the right of the viewport.
+
+**RESOLUTION**:
+
+Spacing along the right (either overhang or a blank margin) was solved by removing `width: 100vw` from header and footer, and adding `width: 100%` to a child element of header. 
+
+
+
+**ERROR**: 
+
+Instead of emptying out the database options followed by repopulating every time an animal and/or outfit is deleted/updated (which would delete the title options), I tried to have the populate menu functions generate the title options, and have the delete from database function to delete the individual option that was selected. Instead, the populate function no longer populates the drop-down menus and the delete function attached to the delete button via an on-click event listener removes both drop-down menus completely.
+
+**RESOLUTION**: 
+
+Used labels instead.
+
+
 
 **ERROR**:
 
@@ -92,6 +111,8 @@ When using Bootstrap, the footer overlaps the hamburger/toggle navbar. When the 
 **RESOLUTION**:
 
 Replaced `div` tag with `footer` tag as before. Deleted all CSS stylings except the inline color stylings. Added `margin-top` to CSS for footer. 
+
+
 
 **ERROR**:
 When clicking delete button, following error occurs (and request to delete select-menu selections from menu is not completed):
@@ -118,6 +139,7 @@ Use of global variables inside function definitions were edited according to the
 The function to populate the outfits menu had originally included `option` tags without `value` attributes and that were not associated with JSON objects. These test options were removed to avoid going to an endpoint with no defined route in the backend server. 
 
 
+
 **ERROR**: 
 
 Unable to grab the `option` values or have the button event listener fire upon event rather than upon page load.
@@ -128,6 +150,8 @@ Lia figured out that since my jQuery & `script.js` script tags were higher on my
 
 One of the `select` on.change() event listeners was still firing upon page load rather than upon the event, so I will be sticking with callback functions or arrow functions. When testing event listeners, I will be sure to stick with arrow functions to `console.log`, or to put `console.log()` in a callback function.
 
+
+
 **ERROR**: 
 
 Drop-down menu (`select`) was not populating with `options` from my API call.
@@ -135,6 +159,7 @@ Drop-down menu (`select`) was not populating with `options` from my API call.
 **RESOLUTION**: 
 
 On Jordan's advice, using id-selectors instead of jQuery global variables fixed the issue. In further bugs, it seems the lack of defer attribute in my jQuery & `script.js` script tags contributed to the issue. 
+
 
 
 **ERROR**: 
