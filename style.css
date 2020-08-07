@@ -49,6 +49,7 @@ select {
     margin: 1px;
     justify-self: center;
     text-align: center;
+    padding-bottom: 20px
 }
 
 #display-animals-here > li {

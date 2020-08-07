@@ -22,6 +22,9 @@ let $selectedOutfit = ""; // Outfit selected from menu for pairing up/updating/d
 // deleteFromMenuAndAPI ------------ refreshes menu by calling on populateAnimalMenu and populateOutfitMenu and emptying both menus -
 // addNewAnimal ----------NEED TO EMPTY MENU & REPOPULATE (maybe container too??)
 // addNewOutfit ----------NEED TO EMPTY MENU & REPOPULATE (maybe container too??)
+// showAnimals & showOutfits ---- empties div at first, then displays all animals/outfits at once *MEDIA QUERY*
+
+
 
 //////////////////////
 // FUNCTION DEFINITIONS
@@ -58,26 +61,28 @@ const populateOutfitMenu = async () => {
 // Reference animals and outfits
 
 const updateAnimalWithOutfit = async () => {
-    const animalId = $('#selectAnimal').val();
-    const outfitId = $('#selectOutfit').val();
+    const animalId = $('#selectanimal').val();
+    const outfitId = $('#selectoutfit').val();
+    console.log(animalId)
+    console.log(outfitId)
     // const updatedAnimal = {
     //     outfits: outfitId
     // };
     // const updatedOutfit = {
     //     animals: animalId
     // };
-    const matching = await fetch(`${URL}/match/${animalId}/${outfitId}`,
+    const matching = await fetch(`${URL}/animals/match/${animalId}/${outfitId}`,
     {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json'
-        }, body: JSON.stringify(updatedAnimal),
-        body: JSON.stringify(updatedOutfit)
+        }, body: JSON.stringify()//,
+        //body: JSON.stringify(updatedOutfit)
     })
-    console.log(updatedAnimal, updatedOutfit);
+    console.log(matching);
+    const data = matching.json;
+    console.log(matching.name)
 }
-
-$("button#setfave").on('click', updateAnimalWithOutfit);
 
 // EMPTY THE MENUS - OBSOLETE????????
 // to be used when deleting or updating animals and/or outfits so that the options stay current 
@@ -224,10 +229,12 @@ populateAnimalMenu();
 populateOutfitMenu();
 // Delete Button Listener
 $deleteButton.on('click', deleteFromMenuAndAPI);
+// Creates reference between animals, then generates a card to display beneath buttons
+$("button#setfave").on('click', updateAnimalWithOutfit);
 
 $('#addAnimalButton').on('click', addNewAnimal);
 $('#addOutfitButton').on('click', addNewOutfit);
-$("button#setfave").on('click', updateAnimalWithOutfit);
+
 $('#display-all-animals').on('click', showAnimals);
 $('#display-all-outfits').on('click', showOutfits);
 
