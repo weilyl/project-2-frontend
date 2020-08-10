@@ -12,18 +12,10 @@ const $deleteButton = $('#deleteSelected');
 const $updateAnimalButton = $('#updateAnimal');
 const $updateOutfitButton = $('#updateOutfit');
 const $animalsContainer = $("#display-animals-here");
-let $selectedAnimal = ""; // Animal selected from menu for pairing up/updating/deleting
-let $selectedOutfit = ""; // Outfit selected from menu for pairing up/updating/deleting
+let $selectedAnimal = ""; 
+let $selectedOutfit = ""; 
 let animalId = '';
 let outfitId = '';
-///// functions
-// populateAnimalMenu
-// populateOutfitMenu
-// updateAnimalWithOutfit ---------------NEEDS WORK
-// deleteFromMenuAndAPI ------------ refreshes menu by calling on populateAnimalMenu and populateOutfitMenu and emptying both menus -
-// addNewAnimal 
-// addNewOutfit 
-// showAnimals & showOutfits ---- empties div at first, then displays all animals/outfits at once *MEDIA QUERY*
 
 
 
@@ -60,7 +52,7 @@ const populateOutfitMenu = async () => {
 }
 
 // Reference animals and outfits
-    // One quirky side effect of PUT controller is that getAllAnimals returns all properties of referenced outfits, while getAllOutfits only returns an array of object ID's belonging to reference animals even though functions are essentially the same
+    // One quirky side effect of PUT controller is that getAllAnimals returns all properties of referenced outfits, while getAllOutfits only returns an array of object ID's belonging to reference animals even though controllers are essentially the same
 const updateAnimalWithOutfit = async () => {
 
     animalId = $('#selectanimal').val();
@@ -77,15 +69,16 @@ const updateAnimalWithOutfit = async () => {
         headers: {
             'Content-Type': 'application/json'
         }, body: JSON.stringify(dataToSend)
+        // post-post-MVP for the function updateAnimalWithOutfit:
+        // Use array square bracket notation to target animal or outfit objects inside of the array dataToSend
     })
     const data = await response.json();
-    console.log(data);
+
     const $div = $('<div>').addClass("display-card");
     $animalsContainer.prepend($div)
     const getUpdatedAnimal = async (animalId) => {
         const response = await fetch(`${URL}/animals/${animalId}`)
         const updatedAnimal = await response.json(); 
-        console.log(updatedAnimal)
 
         const $h1 = $('<h1>').text(updatedAnimal.name);
         $div.append($h1);
@@ -95,29 +88,19 @@ const updateAnimalWithOutfit = async () => {
     const getUpdatedOutfit = async (outfitId) => {
         const response = await fetch(`${URL}/outfits/${outfitId}`)
         const updatedOutfit = await response.json();
-        console.log(updatedOutfit)
 
         const $h1 = $('<h1>').text(updatedOutfit.name);
         $div.append($h1);
         const $img = $('<img>').attr("src", updatedOutfit.photo).attr("alt", updatedOutfit["photo-alt-text"]).addClass('photo');
         $div.append($img);
+        // post-MVP for the function getUpdatedOutfit:
+        // Instead of using /outfits/:outfitId endpoint, use animals/:animalId endpoint, & use dot notation & array methods to obtain outfit id's & other properties
+        // Alternatively, if the above idea does not work, use array methods to nest getUpdatedOutfit inside of getUpdateAnimal
     } 
 
     getUpdatedAnimal(animalId);
     getUpdatedOutfit(outfitId);
 }
-
-// const getUpdatedAnimal = async (animalId) => {
-//     const response = await fetch(`${URL}/animals/${animalId}`)
-//     const updatedAnimal = await response.json();
-//     console.log(updatedAnimal)
-// } 
-// const getUpdatedOutfit = async (outfitId) => {
-//     const response = await fetch(`${URL}/outfits/${outfitId}`)
-//     const updatedOutfit = await response.json();
-//     console.log(updatedOutfit)
-// } 
-
 
 // Defining DELETE BUTTON function (capable of deleting both)
 const deleteFromMenuAndAPI = async () => {
@@ -163,7 +146,6 @@ const addNewAnimal = async () => {
         },
         body: JSON.stringify(newAnimal)
     })
-    console.log(newAnimal);
     $selectAnimal.empty();
     populateAnimalMenu();
 }
@@ -185,7 +167,6 @@ const addNewOutfit = async () => {
         },
         body: JSON.stringify(newOutfit)
     })
-    console.log(newOutfit);
     $selectOutfit.empty();
     populateOutfitMenu();
 }
@@ -196,7 +177,6 @@ const showOutfits = async () => {
     const response = await fetch(`${URL}/outfits`);
     const outfits = await response.json();
         outfits.forEach((outfit) => {
-            console.log(outfit.photo);
             const $eachOutfit = $('<div>').addClass("display-card");
             const $eachOutfitName = $('<h1>').text(outfit.name);
             $eachOutfit.append($eachOutfitName);
@@ -211,7 +191,6 @@ const showAnimals = async () => {
     const response = await fetch(`${URL}/animals`);
     const animals = await response.json();
         animals.forEach((animal) => {
-            console.log(animal.photo);
             const $eachAnimal = $('<div>').addClass("display-card");
             const $eachAnimalName = $('<h1>').text(animal.name);
             $eachAnimal.append($eachAnimalName);

@@ -6,13 +6,13 @@
 
 |  Day | Deliverable | Status
 |---|---| ---|
-|Day 1| Project Description & Worksheet README.md | Inomplete
-|Day 1| Wireframes / Priority Matrix / Timeline | Incomplete
-|Day 2| Drop ideas in Planning folder & continue to work on [Backend](https://github.com/weilyl/project-2-backend) | Incomplete
-|Day 3| Core Front-end Structure (HTML, jQuery) | Incomplete
-|Day 4| Mobile-first CSS, jQuery troubleshooting | Incomplete
-|Day 5| MVP, Final touches, Deployment | Incomplete
-|Day 6| Present | Incomplete
+|Day 1| Project Description & Worksheet README.md | Complete
+|Day 1| Wireframes / Priority Matrix / Timeline | Complete
+|Day 2| Drop ideas in Planning folder & continue to work on [Backend](https://github.com/weilyl/project-2-backend) | Complete
+|Day 3| Core Front-end Structure (HTML, jQuery) | Complete
+|Day 4| Mobile-first CSS, jQuery troubleshooting | Complete
+|Day 5| MVP, Final touches, Deployment | Complete
+|Day 6| Present | Complete
 
 ## Project Description
 
