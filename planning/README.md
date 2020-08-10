@@ -42,8 +42,6 @@ The final result of this project will be a functional full-stack CRUD site and A
 | Hamburger menu (mobile) | H | 3hr | 1hr |
 | CSS styling | L | 5hr | 5hr| 
 | CSS media queries/responsiveness | L | 5hr | 2hr |
-|
-|
 | Total | H | 27hrs | 39hrs | 
 
 
@@ -56,14 +54,15 @@ The final result of this project will be a functional full-stack CRUD site and A
 | Show existing data as cards | H | 5hr | -hr |
 | View existing data by animals (as cards) | L | 10hr | 2hr |
 | View existing data by clothing item (as cards) | L | 10hr | 2hr |
-| 
-|
 | Total | H | 30hrs| 5hrs | 
 
 ## Additional Libraries
 
 https://code.jquery.com/
+
 https://fonts.google.com/ 
+
+https://getbootstrap.com/
 
 
 ## Code Snippet
